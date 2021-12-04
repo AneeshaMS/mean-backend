@@ -14,9 +14,7 @@ const UserData = require('./src/model/UserModel')
 const bookRoutes = require('./routes/books')
 const authorRoutes = require ('./routes/authors')
 app.use(express.static('./dist/frontend'));
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
-   });
+
 
 
 mongoose.connect("mongodb+srv://userzero:userzero@ictakfiles.4ubv7.mongodb.net/LIBRARYAPP?retryWrites=true&w=majority",{useUnifiedTopology:true,useNewUrlParser:true});
@@ -127,6 +125,10 @@ else{
         
       
     } ) 
+
+    app.get('/*', function(req, res) {
+        res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+       });
 app.listen(ports,()=>{
     console.log(`Listening to port ${ports}`)
 })
