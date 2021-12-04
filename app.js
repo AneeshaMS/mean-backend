@@ -19,7 +19,7 @@ const ports = process.env.PORT || 3000;
 var app = new express();
 app.use(express.json());
 app.use(cors());
-// app.use(express.static('./dist/frontend'));
+app.use(express.static('./dist/frontend'));
 // app.use(express.static("images"));
 app.use('/images',express.static(path.join('images')))
 username = "admin@gmail.com";
@@ -29,7 +29,7 @@ password="admin12345";
 app.use('/books',bookRoutes)
 app.use('/authors',authorRoutes)
 
- app.post('/login',(req,res)=>{
+ app.post('/api/login',(req,res)=>{
 let userData = req.body
 var user1 = {
                  
@@ -72,7 +72,7 @@ else{
 
 
 
-    app.post("/signup",(req,res)=>{
+    app.post("/api/signup",(req,res)=>{
         let userData = req.body  
         var user1 = {
                  
@@ -119,9 +119,9 @@ else{
       
     } ) 
 
-    // app.get('/*', function(req, res) {
-    //     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
-    //    });
+    app.get('/*', function(req, res) {
+        res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+       });
 app.listen(ports,()=>{
     console.log(`Listening to port ${ports}`)
 })
