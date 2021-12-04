@@ -38,7 +38,7 @@ password="admin12345";
 app.use('/books',bookRoutes)
 app.use('/authors',authorRoutes)
 
- app.post('/login',(req,res)=>{
+ app.post('/api/login',(req,res)=>{
 let userData = req.body
 var user1 = {
                  
@@ -81,7 +81,7 @@ else{
 
 
 
-    app.post("/signup",(req,res)=>{
+    app.post("/api/signup",(req,res)=>{
         let userData = req.body  
         var user1 = {
                  
